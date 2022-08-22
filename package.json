@@ -1,0 +1,26 @@
+{
+  "name": "episode-54-live-queries-in-memory",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "ts-node server.ts",
+    "dev": "ts-node-dev server.ts",
+    "check": "tsc --pretty --noEmit"
+  },
+  "dependencies": {
+    "@apollo/client": "3.6.9",
+    "@envelop/live-query": "4.1.0",
+    "@graphql-tools/utils": "^8.8.0",
+    "@graphql-yoga/node": "2.12.0",
+    "@n1ru4l/graphql-live-query": "0.10.0",
+    "@n1ru4l/graphql-live-query-patch-jsondiffpatch": "0.8.0",
+    "@n1ru4l/in-memory-live-query-store": "0.10.0",
+    "graphql": "16.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "18.0.3",
+    "ts-node": "10.8.2",
+    "ts-node-dev": "2.0.0",
+    "typescript": "4.7.4"
+  }
+}
