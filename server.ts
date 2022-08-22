@@ -8,6 +8,7 @@ import { applyLiveQueryJSONDiffPatchGenerator } from "@n1ru4l/graphql-live-query
 const liveQueryStore = new InMemoryLiveQueryStore();
 
 type Bid = {
+  id: number
   amount: number;
 };
 
@@ -17,8 +18,10 @@ type Auction = {
   bids: Bid[];
 };
 
+let lastBidId = 1
+
 const auctions: Auction[] = [
-  { id: "1", title: "Digital-only PS5", bids: [{ amount: 100 }] },
+  { id: "1", title: "Digital-only PS5", bids: [{ id: lastBidId, amount: 100 }] },
 ];
 
 const server = createServer({
@@ -35,6 +38,7 @@ const server = createServer({
           bids: [Bid!]!
         }
         type Bid {
+          id: ID!
           amount: Int!
         }
         type Mutation {
@@ -56,8 +60,8 @@ const server = createServer({
           const { auctionId, amount } = input;
 
           const index = auctions.findIndex((a) => a.id === auctionId);
-
-          const bid = { amount };
+          lastBidId++
+          const bid = { id: lastBidId, amount };
 
           auctions[index].bids.push(bid);
 
